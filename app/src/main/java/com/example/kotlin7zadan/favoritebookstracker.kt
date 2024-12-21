@@ -22,10 +22,10 @@ val books = mutableListOf<Book>(
 val sortedBooks = books.sortedBy {it.title}
 
 fun filterBook() {
-    println("Select what you want to sort by: ")
+    println("Select what you want to filter by (author or year): ")
     val filterOption = readln()
 
-    println("Choose value of your sorting: ")
+    println("Choose value of your filtering: ")
     val filterOptionValue = readln()
 
     when (filterOption) {
