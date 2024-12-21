@@ -21,6 +21,28 @@ val books = mutableListOf<Book>(
 
 val sortedBooks = books.sortedBy {it.title}
 
+fun filterBook() {
+    println("Select what you want to sort by: ")
+    val filterOption = readln()
+
+    println("Choose value of your sorting: ")
+    val filterOptionValue = readln()
+
+    when (filterOption) {
+        "author" -> {
+            val filtering = books.filter { book -> book.author == filterOptionValue }
+            filtering.forEach{book -> println(book)}
+        }
+        "year" -> {
+            val filtering = books.filter { book -> book.year == filterOptionValue.toInt() }
+            filtering.forEach{book -> println(book)}
+        }
+        else -> {
+            print("Something went wrong")
+        }
+    }
+
+}
 
 fun addBook(list: MutableList<Book>) {
     println("enter title: ")
@@ -36,22 +58,30 @@ fun addBook(list: MutableList<Book>) {
 }
 
 fun manageBooks(userFunction: Int) {
-    while(userFunction != 0) {
         when(userFunction) {
-            1 -> books.forEach{ book ->  println(book)}
-            2 -> sortedBooks.forEach{book -> println(book)}
+            1 -> books.forEach { book -> println(book) }
+            2 -> sortedBooks.forEach { book -> println(book) }
             3 -> addBook(books)
-            else -> println("Something went wrong")
-        }
+            4 -> filterBook()
+
     }
 
 }
 
 
 fun main() {
-    println("Select your action \n 1: show books \n 2: show books sorted by title \n 3: add a new title\n")
-    val option: Int = readln().toInt()
-    manageBooks(option)
+    var cos = false
+
+    while(!cos) {
+        println("Select your action \n 1: show books \n 2: show books sorted by title \n 3: add a new title\n 4: show books by filtering\n 0: end program\n")
+        val option = readln().toInt()
+        manageBooks(option)
+
+        if (option == 0) {
+            cos = true
+        }
+    }
+
 
 }
 
