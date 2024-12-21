@@ -1,6 +1,10 @@
 package com.example.kotlin7zadan
 
-data class Book(val title: String, val author: String, val year: Int)
+data class Book(val title: String, val author: String, val year: Int) {
+    override fun toString(): String {
+        return "title: ${title}, author: ${author}, year: ${year}"
+    }
+}
 
 fun main() {
     val books = listOf(
@@ -15,6 +19,12 @@ fun main() {
         Book("Sapiens: A Brief History of Humankind", "Yuval Noah Harari", 2011),
         Book("Atomic Habits", "James Clear", 2018)
     )
+
+    val sortedBooks = books.sortedBy {it.title}
+    val showSortedBooks = sortedBooks.forEach{book -> println(book)}
+
+
+    val showBooks = books.forEach{book -> println(book)}
 
 }
 
