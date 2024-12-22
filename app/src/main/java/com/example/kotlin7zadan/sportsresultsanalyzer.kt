@@ -18,9 +18,16 @@ class Analyzer {
         fun addMatch(userMatchName: String, userMatchPoints: Int) { // metoda do dodawania meczow
             teamMatches += userMatchName to userMatchPoints
         }
+
+        fun filterMatchResultsByScore(matchScore: Int) {
+            val filteredMatchResults = teamMatches.filter { it.value > matchScore } // .value odnosi sie do pierwszej wlasciwosci mapy
+            for((key,value) in filteredMatchResults) { // uzyskiwanie dostepu do wlasciwosci mapy poprzez key i value
+                println("$key, points: $value")
+            }
+        }
     }
 }
 
 fun main() {
-    println(Analyzer.teamMatches)
+    Analyzer.filterMatchResultsByScore(8)
 }
