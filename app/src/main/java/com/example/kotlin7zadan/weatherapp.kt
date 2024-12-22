@@ -37,3 +37,27 @@ class Foggy: Weather {
 
 data class City(val name: String, val weather: Weather)
 
+fun main() {
+    val cities = listOf(
+        City("Warsaw", Sunny()),
+        City("Berlin", Rainy()),
+        City("Paris", Stormy()),
+        City("London", Foggy()),
+        City("Moscow", Snowy()),
+        City("Madrid", Sunny()),
+        City("Rome", Sunny()),
+        City("Athens", Sunny()),
+        City("Stockholm", Snowy()),
+        City("Helsinki", Snowy()),
+        City("Dublin", Rainy()),
+        City("Edinburgh", Foggy()),
+        City("Lisbon", Sunny()),
+        City("Prague", Rainy()),
+        City("Vienna", Foggy()),
+        City("Oslo", Snowy()),
+        City("Copenhagen", Rainy()),
+        City("Brussels", Rainy()),
+        City("Amsterdam", Foggy()),
+        City("Zurich", Snowy())
+    )
+}
