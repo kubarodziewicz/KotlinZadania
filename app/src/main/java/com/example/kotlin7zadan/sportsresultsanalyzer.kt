@@ -2,7 +2,7 @@ package com.example.kotlin7zadan
 
 class Analyzer {
     companion object {
-        var teamMatches: Map<String, Int> = mutableMapOf(
+        var teamMatches: Map<String, Int> = mutableMapOf( // mapa przedstawia wyniki meczow wraz z punktami, dziala jak slownik
             "match1" to 3,
             "match2" to 7,
             "match3" to 4,
@@ -15,7 +15,7 @@ class Analyzer {
             "match10" to 10
         )
 
-        fun addMatch(userMatchName: String, userMatchPoints: Int) {
+        fun addMatch(userMatchName: String, userMatchPoints: Int) { // metoda do dodawania meczow
             teamMatches += userMatchName to userMatchPoints
         }
     }
