@@ -15,19 +15,35 @@ class Analyzer {
             "match10" to 10
         )
 
+        fun displayMatchResults() {
+            for((key,value) in teamMatches) { // uzyskiwanie dostepu do wlasciwosci mapy poprzez key i value
+                println("$key, points: $value")
+            }
+        }
+
         fun addMatch(userMatchName: String, userMatchPoints: Int) { // metoda do dodawania meczow
             teamMatches += userMatchName to userMatchPoints
         }
 
         fun filterMatchResultsByScore(matchScore: Int) {
             val filteredMatchResults = teamMatches.filter { it.value > matchScore } // .value odnosi sie do pierwszej wlasciwosci mapy
-            for((key,value) in filteredMatchResults) { // uzyskiwanie dostepu do wlasciwosci mapy poprzez key i value
+            for((key,value) in filteredMatchResults) {
                 println("$key, points: $value")
+            }
+        }
+
+        fun addBonusPoints(matchName: List<String>) { // uzytkownik podaje ktorym meczom chce zmienic punkty, jest to przekazane jako lista w parametrze
+            val updatedMatches = teamMatches.mapValues { // mapValues zachowuje mape zamiast przeksztalcac ja
+                if (it.key in matchName) it.value + 1 else it.value // jezeli wartosc z matchName znajduje sie w liscie teamMatches to zwieksz wartosc o 1, jezeli nie, zwroc pierwotna wartosc
+            }
+            updatedMatches.forEach { // wypisywanie wartosci
+                (key, value) -> println("$key, points: $value")
             }
         }
     }
 }
 
 fun main() {
-    Analyzer.filterMatchResultsByScore(8)
+    Analyzer.displayMatchResults()
+    Analyzer.addBonusPoints(listOf("match1","match2")) // lista jest podana jako parametr funkcji wiec trzeba ja zdefiniowac
 }
