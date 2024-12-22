@@ -40,10 +40,18 @@ class Analyzer {
                 (key, value) -> println("$key, points: $value")
             }
         }
+
+        fun viewHighestPoints() {
+            val highestPoints = teamMatches.maxByOrNull { it.value } // maxByOrNull zwraca najwyzszy element
+            if (highestPoints != null) { // musi sprawdzic czy nie jest null
+                println("Najwyzsza liczba punktow: ${highestPoints.value}, ma ja mecz ${highestPoints.key}")
+            }
+        }
     }
 }
 
 fun main() {
     Analyzer.displayMatchResults()
     Analyzer.addBonusPoints(listOf("match1","match2")) // lista jest podana jako parametr funkcji wiec trzeba ja zdefiniowac
+    Analyzer.viewHighestPoints()
 }
