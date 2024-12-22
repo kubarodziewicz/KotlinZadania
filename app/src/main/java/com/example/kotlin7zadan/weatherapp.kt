@@ -1,38 +1,29 @@
 package com.example.kotlin7zadan
 
 interface Weather {
-    fun displayWeather()
+    val displayWeather: String
 }
 
 
 class Sunny: Weather {
-    override fun displayWeather() {
-        println("Weather is sunny")
+    override val displayWeather: String = "sunny"
     }
-}
+
 
 class Rainy: Weather {
-    override fun displayWeather() {
-        println("Weather is rainy")
-    }
+    override val displayWeather: String = "rainy"
 }
 
 class Stormy: Weather {
-    override fun displayWeather() {
-        println("Weather is stormy")
-    }
+    override val displayWeather: String = "stormy"
 }
 
 class Snowy: Weather {
-    override fun displayWeather() {
-        println("Weather is snowy")
-    }
+    override val displayWeather: String = "snowy"
 }
 
 class Foggy: Weather {
-    override fun displayWeather() {
-        println("Weather is foggy")
-    }
+    override val displayWeather: String = "foggy"
 }
 
 data class City(val name: String, val weather: Weather)
@@ -60,4 +51,12 @@ fun main() {
         City("Amsterdam", Foggy()),
         City("Zurich", Snowy())
     )
+
+    print("What city would you like to check the weather for?\n|")
+    val displaycities = cities.forEach{city -> print(" ${city.name} |")}
+    val usersCity = readln()
+    val matchingCity = cities.find { city -> city.name.uppercase() == usersCity.uppercase() }
+    if (matchingCity != null) {
+        println("Weather in ${matchingCity.name} is ${matchingCity.weather.displayWeather}")
+    }
 }
